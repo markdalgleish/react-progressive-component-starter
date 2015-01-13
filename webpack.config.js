@@ -26,9 +26,7 @@ module.exports = {
     new webpack.DefinePlugin({
       ENV: JSON.stringify(ENV)
     }),
-    new ReactToHtmlPlugin({
-      'index.html': ENV.outputFilename
-    })
+    new ReactToHtmlPlugin('index.html', ENV.outputFilename)
   ]
 
 };
