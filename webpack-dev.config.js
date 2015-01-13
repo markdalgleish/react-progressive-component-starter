@@ -1,5 +1,6 @@
 var pkg = require('./package.json');
 var webpack = require('webpack');
+var path = require('path');
 var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 
@@ -19,7 +20,7 @@ module.exports = [
 
     output: {
       filename: 'index.js',
-      path: 'lib',
+      path: path.resolve('./lib'),
       libraryTarget: 'commonjs2'
     },
 
@@ -47,7 +48,7 @@ module.exports = [
 
     output: {
       filename: '[name].js',
-      path: 'demo-dist',
+      path: path.resolve('./demo-dist'),
       library: 'component',
       libraryTarget: 'umd'
     },
