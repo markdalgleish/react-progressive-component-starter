@@ -11,7 +11,11 @@ module.exports = React.createClass({
         <body>
           <h1>Demo</h1>
           <Component />
-          <script src={ENV.outputFilename} />
+          {
+            ENV.isDev ?
+              <script src="main-hot.js" /> :
+              <script src="main.js" />
+          }
         </body>
       </html>
     );

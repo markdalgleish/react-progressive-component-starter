@@ -4,11 +4,11 @@ var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 
 var loaders = [
-  { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+  { test: /\.jsx$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
 ];
 
 var ENV = {
-  isDev: false
+  isDev: true
 };
 
 module.exports = [
@@ -34,10 +34,19 @@ module.exports = [
   {
     name: 'demo',
 
-    entry: './demo/index.jsx',
+    entry: {
+      'main': [
+        './demo/index.jsx'
+      ],
+      'main-hot': [
+        'webpack-dev-server/client?http://0.0.0.0:8080',
+        'webpack/hot/only-dev-server',
+        './demo/index.jsx'
+      ]
+    },
 
     output: {
-      filename: 'main.js',
+      filename: '[name].js',
       path: 'demo-dist',
       library: 'component',
       libraryTarget: 'umd'
@@ -48,6 +57,8 @@ module.exports = [
     },
 
     plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin(),
       new webpack.DefinePlugin({ ENV: JSON.stringify(ENV) }),
       new ReactToHtmlPlugin('index.html', 'main.js')
     ]
