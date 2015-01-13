@@ -1,15 +1,19 @@
 var pkg = require('./package.json');
-var FileWebpackPlugin = require('file-webpack-plugin');
+var webpack = require('webpack')
+var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 
-var React = require('react');
-var Demo = React.createFactory(require('./demo/Demo'));
+var ENV = {
+  outputFilename: 'main.js'
+};
 
 module.exports = {
   entry: './demo',
 
   output: {
-    filename: 'main.js',
-    path: 'demo-dist'
+    filename: ENV.outputFilename,
+    path: 'demo-dist',
+    library: 'component',
+    libraryTarget: 'umd'
   },
 
   module: {
@@ -19,10 +23,11 @@ module.exports = {
   },
 
   plugins: [
-    new FileWebpackPlugin({
-      'index.html': function(callback) {
-        callback(null, React.renderToString(Demo()));
-      }
+    new webpack.DefinePlugin({
+      ENV: JSON.stringify(ENV)
+    }),
+    new ReactToHtmlPlugin({
+      'index.html': ENV.outputFilename
     })
   ]
 

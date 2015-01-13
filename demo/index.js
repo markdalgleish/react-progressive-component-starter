@@ -1,4 +1,8 @@
 var React = require('react');
-var Demo = React.createFactory(require('./Demo'));
+var Demo = React.createFactory(require('./Demo.jsx'));
 
-React.render(Demo(), document.body);
+if (typeof document !== 'undefined') {
+  React.render(Demo(), document.body);
+}
+
+module.exports = Demo;
