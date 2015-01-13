@@ -4,11 +4,16 @@ var Component = require('../lib');
 module.exports = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>Demo</h1>
-        <Component />
-        <script src={ENV.outputFilename} />
-      </div>
+      <html>
+        <head>
+          <title>Demo</title>
+        </head>
+        <body>
+          <h1>Demo</h1>
+          <Component />
+          <script src={ENV.outputFilename} />
+        </body>
+      </html>
     );
   }
 });
