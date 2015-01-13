@@ -20,7 +20,7 @@
     "babel": "^4.0.1",
     "babel-core": "^4.0.2",
     "babel-loader": "^4.0.0",
-    "react-to-html-webpack-plugin": "git://github.com/markdalgleish/react-to-html-webpack-plugin",
+    "react-to-html-webpack-plugin": "^2.0.0",
     "http-server": "^0.7.4",
     "webpack": "^1.5.3"
   }

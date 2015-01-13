@@ -7,7 +7,7 @@ var ENV = {
 };
 
 module.exports = {
-  entry: './demo',
+  entry: './demo/index.jsx',
 
   output: {
     filename: ENV.outputFilename,
