@@ -1,0 +1,18 @@
+{
+  "name": "react-isomorphic-component-starter",
+  "version": "1.0.0",
+  "description": "Starter kit for isomorphic React component projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "supervisor demo",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Dalgleish",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "supervisor": "^0.6.0"
+  }
+}
