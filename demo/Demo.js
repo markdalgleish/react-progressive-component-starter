@@ -1,5 +1,5 @@
 var React = require('react');
-var Component = React.createFactory(require('../index.js'));
+var Component = React.createFactory(require('../lib'));
 
 module.exports = React.createClass({
   render: function() {

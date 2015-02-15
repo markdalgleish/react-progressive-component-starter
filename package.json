@@ -2,9 +2,13 @@
   "name": "react-isomorphic-component-starter",
   "version": "1.0.0",
   "description": "Starter kit for isomorphic React component projects",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "supervisor demo",
+    "babel": "babel src --out-dir lib",
+    "build": "npm run babel",
+    "dev": "supervisor demo & npm run babel -- --watch",
+    "start": "npm run build && npm run dev",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mark Dalgleish",
@@ -13,6 +17,7 @@
     "react": "^0.12.2"
   },
   "devDependencies": {
+    "babel": "^4.0.1",
     "supervisor": "^0.6.0"
   }
 }
