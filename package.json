@@ -1,7 +1,7 @@
 {
-  "name": "react-isomorphic-component-starter",
+  "name": "react-progressive-component-starter",
   "version": "1.0.0",
-  "description": "Starter kit for isomorphic React component projects",
+  "description": "Starter kit for progressive React component projects",
   "main": "lib/index.js",
   "scripts": {
     "babel": "babel src --out-dir lib",

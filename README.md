@@ -1,4 +1,4 @@
-# react-isomorphic-component-starter
+# react-progressive-component-starter
 
 Warning: This is still very much a work in progress.
 
