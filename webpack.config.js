@@ -2,7 +2,7 @@ var pkg = require('./package.json');
 var FileWebpackPlugin = require('file-webpack-plugin');
 
 var React = require('react');
-var requireWithoutCache = require('require-without-cache');
+var Demo = React.createFactory(require('./demo/Demo'));
 
 module.exports = {
   entry: './demo',
@@ -21,7 +21,6 @@ module.exports = {
   plugins: [
     new FileWebpackPlugin({
       'index.html': function(callback) {
-        var Demo = React.createFactory(requireWithoutCache('./demo/Demo', require));
         callback(null, React.renderToString(Demo()));
       }
     })
