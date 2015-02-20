@@ -22,6 +22,7 @@
     "babel-core": "^4.0.2",
     "babel-loader": "^4.0.0",
     "file-webpack-plugin": "git://github.com/markdalgleish/file-webpack-plugin",
+    "http-server": "^0.7.4",
     "require-without-cache": "0.0.6",
     "webpack": "^1.5.3"
   }
