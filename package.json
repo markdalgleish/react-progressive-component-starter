@@ -7,8 +7,7 @@
     "babel": "babel src --out-dir lib",
     "webpack": "webpack",
     "build": "npm run babel && npm run webpack",
-    "dev": "http-server ./demo-dist -p 8000 & npm run babel -- --watch & npm run webpack -- --watch",
-    "start": "npm run build && npm run dev",
+    "start": "rm -rf demo-dist && http-server ./demo-dist -p 8000 & npm run babel -- --watch & npm run webpack -- --watch",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
