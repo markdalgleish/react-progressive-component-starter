@@ -6,7 +6,8 @@ module.exports = React.createClass({
     return (
       React.DOM.div({},
         React.DOM.h1({}, 'Demo'),
-        Component()
+        Component(),
+        React.DOM.script({ src: 'main.js' })
       )
     );
   }

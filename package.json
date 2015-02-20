@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "babel": "babel src --out-dir lib",
-    "build": "npm run babel",
-    "dev": "supervisor demo & npm run babel -- --watch",
+    "webpack": "webpack",
+    "build": "npm run babel && npm run webpack",
+    "dev": "http-server ./demo-dist -p 8000 & npm run babel -- --watch & npm run webpack -- --watch",
     "start": "npm run build && npm run dev",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +19,10 @@
   },
   "devDependencies": {
     "babel": "^4.0.1",
-    "supervisor": "^0.6.0"
+    "babel-core": "^4.0.2",
+    "babel-loader": "^4.0.0",
+    "file-webpack-plugin": "git://github.com/markdalgleish/file-webpack-plugin",
+    "require-without-cache": "0.0.6",
+    "webpack": "^1.5.3"
   }
 }
