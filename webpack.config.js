@@ -1,32 +1,57 @@
 var pkg = require('./package.json');
-var webpack = require('webpack')
+var webpack = require('webpack');
+var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+
+var loaders = [
+  { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+];
 
 var ENV = {
   outputFilename: 'main.js'
 };
 
-module.exports = {
-  entry: './demo/index.jsx',
+module.exports = [
+  {
+    name: 'component',
 
-  output: {
-    filename: ENV.outputFilename,
-    path: 'demo-dist',
-    library: 'component',
-    libraryTarget: 'umd'
-  },
+    entry: './src/index.jsx',
 
-  module: {
-    loaders: [
-      { test: /\.jsx$/, loader: 'babel-loader' }
-    ]
-  },
+    output: {
+      filename: 'index.js',
+      path: 'lib',
+      libraryTarget: 'commonjs2'
+    },
 
-  plugins: [
-    new webpack.DefinePlugin({
-      ENV: JSON.stringify(ENV)
+    externals: mapValues(pkg.dependencies, function(version, packageName) {
+      return packageName;
     }),
-    new ReactToHtmlPlugin('index.html', ENV.outputFilename)
-  ]
 
-};
+    module: {
+      loaders: loaders
+    }
+  },
+  {
+    name: 'demo',
+
+    entry: './demo/index.jsx',
+
+    output: {
+      filename: ENV.outputFilename,
+      path: 'demo-dist',
+      library: 'component',
+      libraryTarget: 'umd'
+    },
+
+    module: {
+      loaders: loaders
+    },
+
+    plugins: [
+      new webpack.DefinePlugin({
+        ENV: JSON.stringify(ENV)
+      }),
+      new ReactToHtmlPlugin('index.html', ENV.outputFilename)
+    ]
+  }
+];
