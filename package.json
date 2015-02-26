@@ -7,7 +7,7 @@
     "babel": "babel src --out-dir lib",
     "webpack": "webpack",
     "build": "npm run babel && npm run webpack",
-    "start": "rm -rf demo-dist && http-server ./demo-dist -p 8000 & npm run babel -- --watch & npm run webpack -- --watch",
+    "start": "webpack-dev-server --content-base demo-dist & opn http://localhost:8080",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,8 +20,9 @@
     "babel": "^4.0.1",
     "babel-core": "^4.0.2",
     "babel-loader": "^4.0.0",
+    "opn": "^1.0.1",
     "react-to-html-webpack-plugin": "^2.0.0",
-    "http-server": "^0.7.4",
-    "webpack": "^1.5.3"
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0"
   }
 }
