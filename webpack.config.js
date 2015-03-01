@@ -11,10 +11,12 @@ module.exports = [
   {
     name: 'component',
 
-    entry: './src/index.jsx',
+    entry: {
+      'index': './src/index.jsx'
+    },
 
     output: {
-      filename: 'index.js',
+      filename: '[name].js',
       path: 'lib',
       libraryTarget: 'commonjs2'
     },
@@ -30,10 +32,12 @@ module.exports = [
   {
     name: 'demo',
 
-    entry: './demo/index.jsx',
+    entry: {
+      'main': './demo/index.jsx'
+    },
 
     output: {
-      filename: 'main.js',
+      filename: '[name].js',
       path: 'demo-dist',
       library: 'component',
       libraryTarget: 'umd'
