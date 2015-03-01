@@ -8,10 +8,6 @@ var loaders = [
   { test: /\.jsx$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
 ];
 
-var ENV = {
-  isDev: true
-};
-
 module.exports = [
   {
     name: 'component',
@@ -37,11 +33,11 @@ module.exports = [
 
     entry: {
       'main': [
-        './demo/index.jsx'
-      ],
-      'main-hot': [
         'webpack-dev-server/client?http://0.0.0.0:8080',
         'webpack/hot/only-dev-server',
+        './demo/index.jsx'
+      ],
+      'component-for-html': [
         './demo/index.jsx'
       ]
     },
@@ -60,8 +56,7 @@ module.exports = [
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
-      new webpack.DefinePlugin({ ENV: JSON.stringify(ENV) }),
-      new ReactToHtmlPlugin('index.html', 'main.js')
+      new ReactToHtmlPlugin('index.html', 'component-for-html.js')
     ]
   }
 ];

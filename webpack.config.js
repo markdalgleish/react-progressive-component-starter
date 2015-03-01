@@ -7,10 +7,6 @@ var loaders = [
   { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
 ];
 
-var ENV = {
-  isDev: false
-};
-
 module.exports = [
   {
     name: 'component',
@@ -48,7 +44,6 @@ module.exports = [
     },
 
     plugins: [
-      new webpack.DefinePlugin({ ENV: JSON.stringify(ENV) }),
       new ReactToHtmlPlugin('index.html', 'main.js')
     ]
   }
