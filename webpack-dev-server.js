@@ -1,8 +1,8 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack-dev.config');
+var devConfig = require('./webpack-dev.config');
 
-new WebpackDevServer(webpack(config[1]), {
+new WebpackDevServer(webpack(devConfig), {
   contentBase: 'demo-dist',
   hot: true,
   historyApiFallback: true
