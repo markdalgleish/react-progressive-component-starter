@@ -1,11 +1,12 @@
+var pkg = require('./package.json');
 var webpack = require('webpack');
-var first = require('lodash.first');
+var path = require('path');
+var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 
-var prodConfig = require('./webpack.config');
-var prodDemoConfig = first(prodConfig, function(config) {
-  return config.name === 'demo';
-});
+var loaders = [
+  { test: /\.jsx$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
+];
 
 module.exports = {
   entry: {
@@ -19,9 +20,16 @@ module.exports = {
     ]
   },
 
-  output: prodDemoConfig.output,
+  output: {
+    filename: '[name].js',
+    path: path.resolve('./demo-dist'),
+    library: 'component',
+    libraryTarget: 'umd'
+  },
 
-  module: prodDemoConfig.module,
+  module: {
+    loaders: loaders
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
