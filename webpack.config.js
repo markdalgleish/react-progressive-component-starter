@@ -2,6 +2,8 @@ var pkg = require('./package.json');
 var webpack = require('webpack');
 var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+var fs = require('fs');
+var ejs = require('ejs');
 
 var loaders = [
   { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
@@ -44,7 +46,9 @@ module.exports = [
     },
 
     plugins: [
-      new ReactToHtmlPlugin('index.html', 'main.js')
+      new ReactToHtmlPlugin('index.html', 'main.js', {
+        ttemplate: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
+      })
     ]
   }
 ];

@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var path = require('path');
 var mapValues = require('lodash.mapvalues');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+var fs = require('fs');
+var ejs = require('ejs');
 
 var loaders = [
   { test: /\.jsx$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
@@ -34,6 +36,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ReactToHtmlPlugin('index.html', 'component-for-html.js')
+    new ReactToHtmlPlugin('index.html', 'component-for-html.js', {
+      template: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
+    })
   ]
 };
