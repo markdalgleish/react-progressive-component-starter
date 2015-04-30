@@ -1,8 +1,8 @@
-var React = require('react');
-var Demo = require('./Demo');
+import React from 'react';
+import Demo from './Demo';
 
 if (typeof document !== 'undefined') {
   React.render(<Demo />, document.getElementById('outlet'));
 }
 
-module.exports = Demo;
+export default Demo;

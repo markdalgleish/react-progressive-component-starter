@@ -12,10 +12,10 @@
   "author": "Mark Dalgleish",
   "license": "MIT",
   "dependencies": {
-    "react": "^0.12.2"
+    "react": "^0.13.2"
   },
   "devDependencies": {
-    "babel-loader": "^4.0.0",
+    "babel-loader": "^5.0.0",
     "ejs": "^2.3.1",
     "lodash.mapvalues": "^3.0.0",
     "opn": "^1.0.1",

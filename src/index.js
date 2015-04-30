@@ -1,7 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+export default class MyProgressiveComponent extends React.Component {
+
   render() {
     return <div>Hello World</div>;
   }
-});
+
+};
