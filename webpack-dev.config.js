@@ -7,7 +7,7 @@ var fs = require('fs');
 var ejs = require('ejs');
 
 var loaders = [
-  { test: /\.jsx$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
+  { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ }
 ];
 
 module.exports = {
@@ -15,10 +15,10 @@ module.exports = {
     'main': [
       'webpack-dev-server/client?http://0.0.0.0:8080',
       'webpack/hot/only-dev-server',
-      './demo/index.jsx'
+      './demo/index.js'
     ],
     'component-for-html': [
-      './demo/index.jsx'
+      './demo/index.js'
     ]
   },
 

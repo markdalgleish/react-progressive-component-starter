@@ -1,5 +1,5 @@
 var React = require('react');
-var Component = require('../src/index.jsx');
+var Component = require('../src');
 
 module.exports = React.createClass({
   render: function() {

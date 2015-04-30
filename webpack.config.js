@@ -6,14 +6,14 @@ var fs = require('fs');
 var ejs = require('ejs');
 
 var loaders = [
-  { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+  { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
 ];
 
 module.exports = [
   {
     name: 'component',
 
-    entry: './src/index.jsx',
+    entry: './src/index.js',
 
     output: {
       filename: 'index.js',
@@ -32,7 +32,7 @@ module.exports = [
   {
     name: 'demo',
 
-    entry: './demo/index.jsx',
+    entry: './demo/index.js',
 
     output: {
       filename: 'main.js',
