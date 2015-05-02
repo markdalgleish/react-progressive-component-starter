@@ -47,7 +47,7 @@ module.exports = [
 
     plugins: [
       new ReactToHtmlPlugin('index.html', 'main.js', {
-        ttemplate: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
+        template: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
       })
     ]
   }
