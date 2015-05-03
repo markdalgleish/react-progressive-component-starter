@@ -1,12 +1,14 @@
 var pkg = require('./package.json');
 var webpack = require('webpack');
 var mapValues = require('lodash.mapvalues');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
 var fs = require('fs');
 var ejs = require('ejs');
 
 var loaders = [
-  { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+  { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+  { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!less-loader') }
 ];
 
 module.exports = [
@@ -46,6 +48,7 @@ module.exports = [
     },
 
     plugins: [
+      new ExtractTextPlugin('style.css', { allChunks: true }),
       new ReactToHtmlPlugin('index.html', 'main.js', {
         template: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
       })
