@@ -8,7 +8,7 @@ var ejs = require('ejs');
 
 var loaders = [
   { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-  { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[hash:base64:5]!autoprefixer-loader!less-loader') }
+  { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[path][name]---[local]---[hash:base64:5]!autoprefixer-loader!less-loader') }
 ];
 
 module.exports = [
