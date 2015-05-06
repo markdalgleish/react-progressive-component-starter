@@ -20,15 +20,15 @@
     "babel-loader": "^5.0.0",
     "css-loader": "^0.12.0",
     "ejs": "^2.3.1",
-    "extract-text-webpack-plugin": "^0.7.0",
+    "extract-text-webpack-plugin": "^0.7.1",
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
     "lodash.mapvalues": "^3.0.0",
     "opn": "^1.0.1",
     "react-hot-loader": "^1.1.5",
     "react-to-html-webpack-plugin": "^2.1.0",
-    "style-loader": "^0.12.1",
-    "webpack": "^1.5.3",
+    "style-loader": "^0.12.2",
+    "webpack": "^1.8.11",
     "webpack-dev-server": "^1.7.0"
   }
 }
