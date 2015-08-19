@@ -3,12 +3,12 @@ var webpack = require('webpack');
 var path = require('path');
 var mapValues = require('lodash.mapvalues');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 var fs = require('fs');
-var ejs = require('ejs');
 
 var loaders = [
   { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+  { test: /\.ejs$/, loaders: ['ejs-compiled'] },
   { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[path][name]---[local]---[hash:base64:5]!autoprefixer-loader!less-loader') }
 ];
 
@@ -19,7 +19,7 @@ module.exports = {
       'webpack/hot/only-dev-server',
       './demo/index.js'
     ],
-    'component-for-html': [
+    'render': [
       './demo/index.js'
     ]
   },
@@ -39,8 +39,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('style.css', { allChunks: true }),
-    new ReactToHtmlPlugin('index.html', 'component-for-html.js', {
-      template: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
-    })
+    new StaticSiteGeneratorPlugin('render', ['/'])
   ]
 };

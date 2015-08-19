@@ -2,12 +2,12 @@ var pkg = require('./package.json');
 var webpack = require('webpack');
 var mapValues = require('lodash.mapvalues');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ReactToHtmlPlugin = require('react-to-html-webpack-plugin');
+var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 var fs = require('fs');
-var ejs = require('ejs');
 
 var loaders = [
   { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+  { test: /\.ejs$/, loaders: ['ejs-compiled'] },
   { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[hash:base64:5]!autoprefixer-loader!less-loader') }
 ];
 
@@ -34,7 +34,9 @@ module.exports = [
   {
     name: 'demo',
 
-    entry: './demo/index.js',
+    entry: {
+      'demo': './demo/index.js'
+    },
 
     output: {
       filename: 'main.js',
@@ -49,9 +51,7 @@ module.exports = [
 
     plugins: [
       new ExtractTextPlugin('style.css', { allChunks: true }),
-      new ReactToHtmlPlugin('index.html', 'main.js', {
-        template: ejs.compile(fs.readFileSync(__dirname + '/demo/template.ejs', 'utf-8'))
-      })
+      new StaticSiteGeneratorPlugin('demo', ['/'])
     ]
   }
 ];
